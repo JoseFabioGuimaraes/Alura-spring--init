@@ -6,11 +6,8 @@ public class Tarefa {
     private boolean concluida;
     private String pessoaResponsavel;
 
-    public Tarefa(String descricao, boolean concluida, String pessoaResponsavel) {
-        this.descricao = descricao;
-        this.concluida = concluida;
-        this.pessoaResponsavel = pessoaResponsavel;
-    }
+    public Tarefa(){}
+
 
     public String getDescricao() {
         return descricao;
@@ -33,6 +30,12 @@ public class Tarefa {
     }
 
     public void setPessoaResponsavel(String pessoaResponsavel) {
+        this.pessoaResponsavel = pessoaResponsavel;
+    }
+
+    public Tarefa(String descricao, boolean concluida, String pessoaResponsavel) {
+        this.descricao = descricao;
+        this.concluida = concluida;
         this.pessoaResponsavel = pessoaResponsavel;
     }
 
