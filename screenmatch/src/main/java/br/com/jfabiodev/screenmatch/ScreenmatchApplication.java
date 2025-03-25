@@ -17,7 +17,7 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		var consumoAPI = new ConsumoAPI();
 		String json = consumoAPI.obterDados("https://www.omdbapi.com/?t=mr.robot&apikey=f9173cff");
 		System.out.println(json);
-		json = consumoAPI.obterDados("https://coffee.alexflipnote.dev/random.json");
-		System.out.println(json);
+		//json = consumoAPI.obterDados("https://coffee.alexflipnote.dev/random.json");
+		//System.out.println(json);
 	}
 }
