@@ -1,5 +1,6 @@
 package br.com.jfabiodev.screenmatch;
 
+import br.com.jfabiodev.screenmatch.model.DadosEpisodio;
 import br.com.jfabiodev.screenmatch.model.DadosSerie;
 import br.com.jfabiodev.screenmatch.service.ConsumoAPI;
 import br.com.jfabiodev.screenmatch.service.ConverteDados;
@@ -19,11 +20,13 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		var consumoAPI = new ConsumoAPI();
 		String json = consumoAPI.obterDados("https://www.omdbapi.com/?t=mr.robot&apikey=f9173cff");
 		System.out.println(json);
-		//json = consumoAPI.obterDados("https://coffee.alexflipnote.dev/random.json");
-		//System.out.println(json);
 
 		ConverteDados converteDados = new ConverteDados();
 		DadosSerie dadosSerie = converteDados.obterDados(json,DadosSerie.class);
 		System.out.println(dadosSerie);
+
+		json = consumoAPI.obterDados("https://www.omdbapi.com/?t=mr.robot&season=1&episode=2&apikey=f9173cff");
+		DadosEpisodio episodio = converteDados.obterDados(json,DadosEpisodio.class);
+		System.out.println(episodio);
 	}
 }
