@@ -3,6 +3,7 @@ package br.com.jfabiodev.screenmatch.main;
 import br.com.jfabiodev.screenmatch.model.DadosEpisodio;
 import br.com.jfabiodev.screenmatch.model.DadosSerie;
 import br.com.jfabiodev.screenmatch.model.DadosTemporadas;
+import br.com.jfabiodev.screenmatch.model.Episodio;
 import br.com.jfabiodev.screenmatch.service.ConsumoAPI;
 import br.com.jfabiodev.screenmatch.service.ConverteDados;
 
@@ -11,8 +12,8 @@ import java.util.stream.Collectors;
 
 public class Main {
     final Scanner scanner = new Scanner(System.in);
-    private ConsumoAPI consumo = new ConsumoAPI();
-    private ConverteDados converteDados = new ConverteDados();
+    private final ConsumoAPI consumo = new ConsumoAPI();
+    private final ConverteDados converteDados = new ConverteDados();
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
     private final String API_KEY = "&apikey=f9173cff";
 
@@ -57,5 +58,11 @@ public class Main {
                 .sorted(Comparator.comparing(DadosEpisodio::IMDBAvaliacao).reversed())
                 .limit(5)
                 .forEach(System.out::println);
+
+        List<Episodio>episodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream()
+                        .map(d -> new Episodio(t.numero(),d))
+                ).collect(Collectors.toList());
+        episodios.forEach(System.out::println);
     }
 }
