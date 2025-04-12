@@ -95,5 +95,13 @@ public class Main {
 //                + " Episodio: " + e.getTitulo()
 //                + " Data de lançamento: " + e.getDataLancamento().format(formatter)
 //                ));
+
+        Map<Integer,Double> ratingPerSeason = episodios.stream()
+                .filter(e -> e.getAvaliacao() > 0.0)
+                .collect(Collectors.groupingBy(Episodio::getTemporada,
+                        Collectors.averagingDouble(Episodio::getAvaliacao)));
+        System.out.println(ratingPerSeason);
+
+
     }
 }
