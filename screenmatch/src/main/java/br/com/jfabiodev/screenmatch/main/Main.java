@@ -102,6 +102,11 @@ public class Main {
                         Collectors.averagingDouble(Episodio::getAvaliacao)));
         System.out.println(ratingPerSeason);
 
+        DoubleSummaryStatistics stats = episodios.stream()
+                .filter(e -> e.getAvaliacao() > 0.0)
+                .collect(Collectors.summarizingDouble(Episodio::getAvaliacao));
 
+        System.out.println("Média: "+ stats.getAverage() + " Melhor episodio: " + stats.getMax()
+        + " Pior episodio:  " + stats.getMin() + " Quantidade de episodios avalaiados: " + stats.getCount());
     }
 }
