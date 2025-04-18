@@ -24,8 +24,8 @@ Aplicação para consulta de informações sobre séries e episódios utilizando
 
 1. Clone o repositório:
    ```bash
-   git clone <URL_DO_REPOSITORIO>
-   cd <NOME_DO_DIRETORIO>
+   git clone https://github.com/JoseFabioGuimaraes/Alura-spring--init.git
+   cd screematch
    ```
 
 2. Compile o projeto:
